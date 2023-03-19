@@ -15,4 +15,27 @@ body {
 img {
   display: block;
   max-width: 100%;
+  display: block;
 }
+
+.value{
+  display: block;
+  text-align: center;
+  font-size: 30px;
+font-weight: 500;
+
+}
+
+
+.timer{
+  display: flex;
+  gap: 20px;
+
+}
+
+.label{
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+
