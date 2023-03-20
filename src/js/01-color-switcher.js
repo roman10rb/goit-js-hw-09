@@ -15,16 +15,16 @@ refs.start.addEventListener('click', () => {
         olreadyStart = true;
         refs.body.style.backgroundColor = getRandomHexColor();
     }, 1000);
-    refs.stop.addEventListener('click', () => {
+   
+});
+
+
+
+ refs.stop.addEventListener('click', () => {
     clearInterval(colorInterval);
         olreadyStart = false;
-        console.log('stop')
+
 });
-});
-
-
-
-
 
 
 
