@@ -18,6 +18,7 @@ refs.start.addEventListener('click', () => {
     refs.stop.addEventListener('click', () => {
     clearInterval(colorInterval);
         olreadyStart = false;
+        console.log('stop')
 });
 });
 
