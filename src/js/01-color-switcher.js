@@ -5,7 +5,7 @@ const refs = {
     body: document.body,
 };
 
-let olreadyStart;
+let olreadyStart = null;
 refs.start.addEventListener('click', () => {
     if (olreadyStart) {
         return;
