@@ -33,7 +33,6 @@ const options = {
            };
            startBtn.disabled = false;
       changeTimer();
-      startBtn.disabled = false;
       timerMs = chooseDate - Date.now();
      
     },
