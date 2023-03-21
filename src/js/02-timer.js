@@ -5,8 +5,9 @@ import "flatpickr/dist/flatpickr.min.css";
 
 import Notiflix from 'notiflix'; 
 
+
 const startBtn = document.querySelector('button');
-startBtn.addEventListener('click', handleClickTimer);
+
 startBtn.disabled = 'true';
 
 const refs = {
@@ -16,12 +17,7 @@ const refs = {
     seconds: document.querySelector("[data-seconds]"),
 };
 
-const drawTimer = ({ days, hours, minutes, seconds }) => {
-  refs.days.textContent = `${days}`;
-  refs.hours.textContent = `${hours}`;
-  refs.minutes.textContent = `${minutes}`;
-  refs.seconds.textContent = `${seconds}`;
-};
+
 
 const options = {
   enableTime: true,
@@ -44,6 +40,14 @@ const options = {
     
 };
 
+
+const drawTimer = ({ days, hours, minutes, seconds }) => {
+  refs.days.textContent = `${days}`;
+        refs.hours.textContent = `${hours}`;
+        refs.minutes.textContent = `${minutes}`;
+        refs.seconds.textContent = `${seconds}`;
+};
+
 const changeTimer = () => {
   timerMs = chooseDate - Date.now();
   let { days, hours, minutes, seconds } = convertMs(timerMs);
@@ -53,15 +57,18 @@ const changeTimer = () => {
   }
 };
 
+
+
+
+
+
 const handleClickTimer = () => {
   startBtn.disabled = true;
 
   idInterval = setInterval(changeTimer, 1000);
 };
 
-
-
-
+startBtn.addEventListener('click', handleClickTimer);
 
 flatpickr("#datetime-picker", options);
 
