@@ -7,12 +7,14 @@ const refs = {
 
 let olreadyStart = null;
 
-refs.start.addEventListener('click', () => {
+refs.start.addEventListener('click', (e) => {
     if (olreadyStart) {
         return;
     };
     colorInterval = setInterval(() => {
         olreadyStart = true;
+        e.target.disabled = true;
+        refs.stop.disabled = false;
         refs.body.style.backgroundColor = getRandomHexColor();
     }, 1000);
    
@@ -20,10 +22,11 @@ refs.start.addEventListener('click', () => {
 
 
 
- refs.stop.addEventListener('click', () => {
-    clearInterval(colorInterval);
+ refs.stop.addEventListener('click', (e) => {
+     clearInterval(colorInterval);
+     e.target.disabled = true;
         olreadyStart = false;
-
+     refs.start.disabled = false;
 });
 
 
