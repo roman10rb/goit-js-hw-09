@@ -5,8 +5,8 @@ import "flatpickr/dist/flatpickr.min.css";
 
 import Notiflix from 'notiflix'; 
 
-
 const startBtn = document.querySelector('button');
+startBtn.addEventListener('click', handleClickTimer);
 startBtn.disabled = 'true';
 
 const refs = {
@@ -16,38 +16,52 @@ const refs = {
     seconds: document.querySelector("[data-seconds]"),
 };
 
+const drawTimer = ({ days, hours, minutes, seconds }) => {
+  refs.days.textContent = `${days}`;
+  refs.hours.textContent = `${hours}`;
+  refs.minutes.textContent = `${minutes}`;
+  refs.seconds.textContent = `${seconds}`;
+};
+
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
     onClose(selectedDates) {
-    
+      chooseDate = selectedDates[0].getTime();
+      
       if (selectedDates[0] < Date.now()) {
           Notiflix.Notify.failure('Please choose a date in the future');
           return;
            };
            startBtn.disabled = false;
-
-
-        startBtn.addEventListener('click', () => {
-
-            setInterval(() => {
-
-               const timeComponents = selectedDates[0] - Date.now();
-
-                const { days, hours, minutes, seconds } = convertMs(timeComponents);
-                
-        refs.days.textContent = `${days}`;
-        refs.hours.textContent = `${hours}`;
-        refs.minutes.textContent = `${minutes}`;
-        refs.seconds.textContent = `${seconds}`;
-               })
-                   
-           }, 1000); 
+      changeTimer();
+      startBtn.disabled = false;
+      timerMs = chooseDate - Date.now();
+     
     },
     
 };
+
+const changeTimer = () => {
+  timerMs = chooseDate - Date.now();
+  let { days, hours, minutes, seconds } = convertMs(timerMs);
+  drawTimer({ days, hours, minutes, seconds });
+  if (days === '00' && hours === '00' && minutes === '00' && seconds === '00') {
+    clearInterval(idInterval);
+  }
+};
+
+const handleClickTimer = () => {
+  startBtn.disabled = true;
+
+  idInterval = setInterval(changeTimer, 1000);
+};
+
+
+
+
 
 flatpickr("#datetime-picker", options);
 
