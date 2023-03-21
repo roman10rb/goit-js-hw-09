@@ -28,17 +28,17 @@ const options = {
       chooseDate = selectedDates[0].getTime();
       
       if (selectedDates[0] < Date.now()) {
-          Notiflix.Notify.failure('Please choose a date in the future');
+        Notiflix.Notify.failure('Please choose a date in the future');
+        startBtn.disabled = 'true';
           return;
            };
-           startBtn.disabled = false;
+           startBtn.disabled = 'false';
       changeTimer();
       timerMs = chooseDate - Date.now();
      
     },
     
 };
-
 
 const drawTimer = ({ days, hours, minutes, seconds }) => {
   refs.days.textContent = `${days}`;
@@ -55,10 +55,6 @@ const changeTimer = () => {
     clearInterval(idInterval);
   }
 };
-
-
-
-
 
 
 const handleClickTimer = () => {
