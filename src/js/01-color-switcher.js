@@ -23,11 +23,11 @@ refs.start.addEventListener('click', (e) => {
 
 
  refs.stop.addEventListener('click', (e) => {
-     
+      clearInterval(colorInterval);
      e.target.disabled = true;
         olreadyStart = false;
      refs.start.disabled = false;
-      clearInterval(colorInterval);
+     
 });
 
 
