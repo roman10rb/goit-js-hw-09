@@ -6,6 +6,7 @@ const refs = {
 };
 
 let olreadyStart = null;
+let colorInterval = null;
 
 refs.start.addEventListener('click', (e) => {
     if (olreadyStart) {
