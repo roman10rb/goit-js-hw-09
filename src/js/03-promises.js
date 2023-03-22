@@ -30,7 +30,10 @@ function handleSubmitForm(event) {
    const amountOfPromise = Number(amountEl.value);
    let delay = Number(delayEl.value);
   const stepPromise = Number(stepEl.value);
-
+  if (delay < 0 || stepPromise < 0 || amountOfPromise <= 0) {
+    Notiflix.Notify.failure(`❌ Promise can't be created `);
+    return;
+  }
   for (let i = 0; i < amountOfPromise; i += 1) {
 
     createPromise(i+1, delay).then(({ position, delay }) =>
